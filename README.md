@@ -1,2 +1,2 @@
 # Comptetive-Programming
-Algorithms and Codeforces Problems
+Algorithms and Problem Solving
