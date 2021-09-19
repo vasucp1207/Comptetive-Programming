@@ -1,0 +1,177 @@
+RESOURCES:
+
+-GeeksforGeeks
+-Erricto's Blog on codeforces
+-Galin Colin video
+-Tutorial's point blog on Unsigned and Signed Binary Numbers
+
+-------------------------------------------------------------------------------------------------
+
+
+1)Bitwise And(&):
+ 	a=5;
+ 	b=7;
+ 	
+ 	a&b=?
+ 	a=101
+ 	b=111
+ 	
+ 	101
+   &111
+   =101
+   
+   a&b=5
+   
+2)Bitwise Or(|):
+	a=5
+	b=7
+	
+	a|b=?
+	
+	101
+   &111
+   =111
+    
+    a|b=7
+    
+3)Bitwise Xor(^):
+	a=5
+	b=7
+	
+	a^b=(101)^(111)->010
+	a^b=2
+	
+4)Left Shift(<<):
+    x:00....011100
+    x<<2=0....1110000
+    x<<3=0....11100000
+    
+    x<<y=(x*2^y) if leading y bits are 0
+	1<<y=2^y
+    
+    int x=(1<<30);  //1073741824
+    x=x<<1;
+    cout<<x;   //-2147483648
+    
+    int x=1<<30
+    x=x<<2
+    cout<<x   //0
+    
+5)Right Shift:
+	x:00......10010
+	x>>1:00.....01001
+	x>>2:00.....00100
+	
+	x>>y=floor(x/2^y)
+	1>>y=floor(1/2^y)
+	
+6)Bitwise Not:
+	0->1
+	1->0
+	
+Important Points:
+1)The left shift and right shift operators cannot be used with negative numbers.
+2)The & operator can be used to quickly check if a number is odd or even.
+The value of expression (x & 1) would be non-zero only if x is odd, otherwise the value would be zero.
+
+-------------------------------------------------------------------------------------------------------
+Signed and Unsigned Integers:
+
+1)Unsigned:
+
+*Unsigned numbers don’t have any sign, these can contain only magnitude of the number.
+*Representation of unsigned binary numbers are all positive numbers only.	
+*Since there is no sign bit in this unsigned binary number, so N bit binary number represent its magnitude only.  
+*Zero (0) is also unsigned number. This representation has only one zero (0), which is always positive.  
+    
+*Range of a n bits binary no=[min,max]  
+    
+    min=00......000 // n binary zeros
+    max=11......111 // n binary one's
+    
+    min=0
+    max=2^0+2^1+2^2+......+2^(n-1)
+       =2^n-1
+       
+    Range=[0,2^n-1]
+    
+For a 32bit int max=4294967295
+
+	unsigned int x=5;
+	x=~x;
+	cout<<x; //4294967295-5=4294967290
+	
+	x:000....0101
+   ~x:111....1010
+   
+    ans=4294967295-x;
+    
+2)Signed:
+
+*Signed numbers contain sign flag, this representation distinguish positive and negative numbers.
+	
+    000.....01010
+    nth bit is 0,so it represent a +ve no.
+    
+    1010....01010
+    nth bit is 1,so it represent a -ve no.
+    
+*Because of extra signed bit, binary number zero has two representation, either positive (0) or negative (1), so ambiguous representation.
+*But 2’s complementation representation is unambiguous representation because of there is no double representation of number 0   
+*The range of 2’s complement form is from  (2(n-1))  to (2(n-1)-1).
+
+*Signed bits are represent in 2's complement when they are -ve
+
+ 	Range of signed int=[-2^(n-1),2(n-1)-1]    
+ 	
+ 	For a 32 bit int=[-2^31,2^31-1]
+ 	
+    min = -2^31 = 100...0000(31 zero's) //represent in 2's complement
+    max = 2^31-1 = 0111...1111(31 one's)
+    
+2's Complement Form:
+
+*Since, 2’s complement of a number is obtained by inverting each bit of given number plus 1 to least significant bit (LSB).
+*So, we represent positive numbers in simple binary form and negative numbers in 2’s complement form.
+*Therefore, in this representation, zero (0) has only one (unique) representation which is always positive.   
+    
+*2's complement of x in n bits representation = 2^n-x
+
+	int x=1;
+	x=~1;
+	cout<<x;  //-2
+	
+	x:0000....0001
+   ~x:1111....1110 = (2^32-1-1)
+   ~x=-2
+   
+   int x=5;
+   x=~x;
+   cout<<x;  //-6
+   
+   x:000....0101
+  ~x:111....1010 = (2^32-1-5) = -6
+  
+  Value of 0111.....111(31 one's) = 2147483647 = 2^31 - 1
+  Value of 1000.....000(31 zero's) = (2^32 - 1 - 2147483647) = -2147483648
+  That's how we calulate the range for signed int
+    
+
+Some important Tricks:
+
+* mod 2 = &1
+* mod 2^x = &(2^x-1)
+* a+b = (a^b)+2(a&b) or (a|b)+(a&b)
+* kth bit of x = (x>>k)&1   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
