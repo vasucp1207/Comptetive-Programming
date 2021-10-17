@@ -37,10 +37,9 @@ void findPrimes(ll n){
 	for(ll i = 2; i < n / 2 + 1; i++){
 		
 		if(isPrime(i) && isPrime(n - i)){
-			cout << n << ":" << endl;
 			cout << i << "+" << n - i << endl;
 			ok = false;
-			return ;
+			break;
 		}
 	}
 	return ;
@@ -50,14 +49,20 @@ int main(){
 	
 	sievee(10000000);
 	
-	ll n;
-	while(cin >> n){
+	while(true){
 		
-		ok = true;
+		ll n;
+		cin >> n;
+		
 		if(n == 0)break;
 		
+		ok = true;
+		
+		cout << n << ":" <<endl;
+		
 		findPrimes(n);
-		if(ok)cout << "NO WAY!" << endl;
+		if(ok)
+			cout << "NO WAY!" << endl;
 	}
 	
 	
