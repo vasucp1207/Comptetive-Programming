@@ -2,68 +2,89 @@
 
 using namespace std;
 
-vector<bool> flag(1000005);
-vector<int> primes;
+#define ll long long 
+#define ull unsigned long long
 
-void sievee(int upperbound){
+vector<bool> flag(10000000);
+vector<ll> primes;
+
+void sievee(ll upperbound){
 	
-	for(int i = 0; i < 1000004; i++)flag[i] = true;
+	for(ll i = 0; i < 10000000; i++)flag[i] = true;
 	flag[0] = flag[1] = false;
 	
-	for(int i = 2; i < sqrt(upperbound); i++){
+	for(ll i = 2; i < sqrt(upperbound); i++){
 		if(flag[i]){
-			for(int j = i * i; j < upperbound; j += i)
+			for(ll j = i * i; j < upperbound; j += i)
 				flag[j] = false;
 			primes.push_back(i);
 		}
 	}
 }
 
+bool isPrime(ll n){
+	if(n < 10000000)return flag[n];
+	
+	for(ll i = 0; i < primes.size(); i++){
+		if(n % primes[i] == 0)return false;
+	}
+	
+	return true;
+}
+
+void solve(){
+	
+	ll l, u;
+	cin >> l >> u;
+	
+	vector<ll> list;
+	for(ll i = l; i <= u; i++)
+		if(flag[i])
+			list.push_back(i);
+			
+	vector<ll> diff(10000, 0);
+	
+	for(ll i = 1; i < list.size(); i++){
+		diff[list[i] - list[i - 1]]++;
+	}
+	
+	ll ans = 0;
+	ll maxn = 0;
+	for(ll i = 0; i < 10000; i++){
+		if(diff[i] > ans){
+			ans = diff[i];
+			maxn = i;
+		}
+	}
+	
+	ll cnt = 0;
+	for(ll i = 0; i < 10000; i++){
+		if(diff[i] == ans)cnt++;
+	}
+	
+	if(cnt > 1)
+		cout << "No jumping champion" << endl;
+		
+	else{
+		if(ans == 0)
+			cout << "No jumping champion" << endl;
+		else
+			cout << "The jumping champion is " << maxn << endl;	
+	}
+}
+
 int main(){
 	
-	sievee(1000005);
+	sievee(10000000);
 	
 	int t;
 	cin >> t;
 	
 	while(t--){
-		int l, u;
-		cin >> l >> u;
-		
-		vector<int> v;
-		for(int i = l; i <= u; i++)
-			if(primes[i])v.push_back(i);
-			
-		if(v.size() < 2)cout << "NO jumping champion" << endl;
-		
-		else{
-			vector<int> diff(1000, 0);
-			for(int i = 0; i < v.size(); i++){
-				diff[v[i + 1] - v[i]]++;
-			}
-					
-			int maxn = 0;
-			bool flag = true;
-			for(int i = 1; i < 1000; i++){
-				if(diff[i] > diff[maxn]) maxn = i;
-			}
-			
-			int counter = 0;
-			for(int i = 1; i < 1000; i++){
-				if(diff[i] == diff[maxn])counter++;
-				if(counter >= 2){
-					flag = false;
-					break;
-				}
-			}
-			
-			if(flag == false)cout << "No jumping champion" << endl;
-			else cout << "The jumping champion is " << maxn << endl;
-		}
+		solve();
 	}
 	
-	
-	
+		
 	
 	
 	
