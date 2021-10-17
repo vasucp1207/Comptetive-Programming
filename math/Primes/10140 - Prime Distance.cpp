@@ -1,13 +1,15 @@
+/* Check why this code is not worked for big values */
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
-vector<bool> flag(1000000);
+vector<bool> flag(10000000);
 vector<int> primes;
 
 void sievee(int upperbound){
 	
-	for(int i = 0; i < 1000000; i++)flag[i] = true;
+	for(int i = 0; i < 10000000; i++)flag[i] = true;
 	flag[0] = flag[1] = false;
 	
 	for(int i = 2; i < sqrt(upperbound); i++){
@@ -21,7 +23,7 @@ void sievee(int upperbound){
 
 bool primeCheck(int n){
 	
-	if(n < 1000000)return flag[n];
+	if(n < 10000000)return flag[n];
 	for(int i = 0; i < primes.size(); i++){
 		if(n % primes[i] == 0)return false;
 	}
@@ -30,45 +32,43 @@ bool primeCheck(int n){
 
 int main(){
 	
-	sievee(1000000);
+	sievee(10000000);
 	
 	int n, m;
 	while(cin >> n >> m){
 		
-		int mn = 10000000, mx = -1;
-		bool flag = false;
-		int p1, p2, x1, x2, x3, x4, dis;
-		int cnt = 0;
-		
+		vector<int> list;
 		for(int i = n; i <= m; i++){
-			if(primeCheck(i)){
-				if(!flag){
-					p1 = i;
-					flag = true;
-				}
-				else{
-					p2 = i;
-					dis = p2 - p1;
-					if(dis < mn){
-						mn = dis;
-						cnt++;
-						x1 = p1;
-						x2 = p2;
-					}
-					if(dis > mx){
-						mx = dis;
-						cnt++;
-						x3 = p1;
-						x4 = p2;
-					}
-					p1 = p2;
-				}
+			if(primeCheck(i))
+				list.push_back(i);
+		}
+		
+		int a, b, c, d;
+		int dis = 0;
+		int mn = 1000000000;
+		int mx = -1;
+		
+		for(int i = 1; i < list.size(); i++){
+			
+			dis = list[i] - list[i - 1];
+			if(dis < mn){
+				mn = dis;
+				a = list[i - 1];
+				b = list[i];
+			}
+			if(dis > mx){
+				mx = dis;
+				c = list[i - 1];
+	            d = list[i];
 			}
 		}
-		if(cnt == 0)cout << "There are no adjacent primes.\n";
-		else cout << x1 << "," << x2 << " are closest, " << x3 << "," << x4 << " are most distant.\n";
+		
+		if(list.size() < 2)
+			cout << "There are no adjacent primes." << endl;
+		else
+			cout << a << "," << b << " are closest, " << c << "," << d << " are most distant." << endl;
+			
 	}
-	
 	
 	
 	
