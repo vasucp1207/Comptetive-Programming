@@ -59,4 +59,3 @@ for i in range(0, n):
 	arr.append(x)
 	
 print(largestGCD(arr, len(arr)))	
-		
