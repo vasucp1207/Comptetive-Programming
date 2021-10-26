@@ -1,7 +1,6 @@
 import math
 
 def canPlace(r, c):
-	
 	for prev in range(c):
 		if row[prev] == r or abs(row[prev] - r) == abs(prev - c):
 			return False
@@ -14,7 +13,6 @@ def backtrack(c):
 	
 	if c == 8 and row[b] == a:
 		lineCounter += 1
-		print("%2d     d", lineCounter)
 		print("%2d     " % lineCounter, *[i+1 for i in row])
 		return 
 	
