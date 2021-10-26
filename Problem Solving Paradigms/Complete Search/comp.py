@@ -1,6 +1,7 @@
 import math
 
 def canPlace(r, c):
+	
 	for prev in range(c):
 		if row[prev] == r or abs(row[prev] - r) == abs(prev - c):
 			return False
