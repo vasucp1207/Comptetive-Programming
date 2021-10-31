@@ -1,3 +1,7 @@
+/*For most numbers, you need to break the number down into factors below 10, then print the digits in ascending order.
+The smallest number tries to have as many large factors as possible (i.e. maximum number of 9s, followed by maximum 8s, etc.),
+and the result is printed in ascending order.*/
+
 #include <bits/stdc++.h>
 
 using namespace std;
