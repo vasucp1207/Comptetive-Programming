@@ -14,7 +14,7 @@ void solve(ll n){
 	ll orig = n;
 	ll flag = 0;
 	
-	for(int i = 2; i <= sqrt(orig) + 2; i++){
+	for(int i = 2; i <= sqrt(n+0.5); i++){
 		if(n % i == 0){
 			
 			flag++;
