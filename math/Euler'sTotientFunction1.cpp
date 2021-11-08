@@ -32,6 +32,7 @@ int main(){
 	while(t--){
 		int n;
 		cin >> n;
+		
 		cout << "ETF" <<"(" << n << ") = " << phi(n) <<endl; 
 	}	
 	
