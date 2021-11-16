@@ -1,20 +1,20 @@
 #include <bits/stdc++.h>
-#include <bitset>
 
 using namespace std;
 
-void gcd(int a, int b, int &x, int &y){
+int x, y;
+void extendedEuclid(int a, int b){
 	
 	if(b == 0){
 		x = 1;
 		y = 0;
 		return ;
 	}
-	
-	int x1, y1;
-	gcd(b, a % b, x1, y1);
-	x = y1;
-	y = x1 - y1 * (a / b);
+	extendedEuclid(b, a % b);
+	int x1 = y;
+	int y1 = x - (a / b) * y;
+	x = x1;
+	y = y1;
 	return ;
 }
 
@@ -23,13 +23,10 @@ int main(){
 	int a, b;
 	cin >> a >> b;
 	
-	int x, y;
-	gcd(a, b, x, y);
+	extendedEuclid(a, b);
 	
-	cout << x << " , " <<  y;
+	cout << x << " " << y << endl;
 	
-	
-	
-	
-	return 0;
+
+return 0;
 }
