@@ -3,7 +3,7 @@
 using namespace std;
 
 vector<int> arr;
-vector<int> seg_tree;
+vector<int> seg_tree(1000000);
 
 void recalculate(int node){
 	
