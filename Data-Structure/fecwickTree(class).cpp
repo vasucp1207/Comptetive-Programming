@@ -44,6 +44,6 @@ int main() {
 	ft.update(5, 2);
 	cout << ft.rsq(1, 10) << endl;       // 13
 	
- 
+
 	return 0;
 }
