@@ -47,31 +47,39 @@ int main(){
     int sum1 = 0;
     int sum2 = 0;
     int sum3 = 0;
+    int sum4 = 0;
 
-    int a[3][3] = {{3, 7, 9,},
-                {3, 6, 7},
-                {9, 23, 5}
-            };
+    int a[4] = {4, 56, 9, 11};
 
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 4; i++){
         for(int j = 0; j <= i; j++){
-            sum1 += a[i][j];
+            sum1 += a[i] * a[j];
         }
     }
 
-    for(int j = 0; j < 3; j++){
-        for(int i = j; i < 3; i++){
-            sum2 += a[i][j];
+    for(int j = 0; j < 4; j++){
+        for(int i = j; i < 4; i++){
+            sum2 += a[i] * a[j];
         }
     }
 
-    for(int i = 0; i < 3; i++){
-        for(int j = i; j < 3; j++){
-            sum3 += a[j][i];
+    for(int i = 0; i < 4; i++){
+        for(int j = i; j < 4; j++){
+            sum3 += a[i] * a[j];
         }
     }
 
-    cout << sum1 << " " << sum2 << " " << sum3 << endl;
+    for(int i = 0; i < 4; i++){
+        sum4 += a[i];
+    }
+    sum4 *= sum4;
+
+    for(int i = 0; i < 4; i++){
+        sum4 += a[i] * a[i];
+    }
+    sum4 /= 2;
+
+    cout << sum1 << " " << sum2 << " " << sum3 << " " << sum4 << endl;
     
 
     return 0;
