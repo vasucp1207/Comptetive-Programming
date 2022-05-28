@@ -46,21 +46,32 @@ int main(){
 
     int sum1 = 0;
     int sum2 = 0;
+    int sum3 = 0;
 
-    int a[] = {3, 7, 9, 2, 19, 1, 10, 4, 32};
-    for(int i = 0; i < 9; i++){
+    int a[3][3] = {{3, 7, 9,},
+                {3, 6, 7},
+                {9, 23, 5}
+            };
+
+    for(int i = 0; i < 3; i++){
         for(int j = 0; j <= i; j++){
-            sum1 += a[j];
+            sum1 += a[i][j];
         }
     }
 
-    for(int j = 0; j < 9; j++){
-        for(int i = j; i < 9; i++){
-            sum2 += a[j];
+    for(int j = 0; j < 3; j++){
+        for(int i = j; i < 3; i++){
+            sum2 += a[i][j];
         }
     }
 
-    cout << sum1 << " " << sum2 << endl;
+    for(int i = 0; i < 3; i++){
+        for(int j = i; j < 3; j++){
+            sum3 += a[j][i];
+        }
+    }
+
+    cout << sum1 << " " << sum2 << " " << sum3 << endl;
     
 
     return 0;
