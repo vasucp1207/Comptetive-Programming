@@ -3,7 +3,6 @@
 using namespace std;
 
 class FenwickTree{
-	
 private:
 	vector<int> ft;
 	
